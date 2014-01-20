@@ -7,7 +7,6 @@ function TrafficCtrl($scope, $http) {
 
 
     $http.get("/Ajax/GetAllTraffic").success(function (data) {
-        console.log(data);
         $scope.traffic = data;
     });
 
