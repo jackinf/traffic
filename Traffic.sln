@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficMVC", "TrafficMVC\TrafficMVC.csproj", "{BA9413D2-F3A8-47F9-892F-DDD134237C28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{062C2F2B-1A45-4760-827C-0788C1B8414E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{1DE1EB8E-5A29-4947-A265-6DE819BB4951}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA9413D2-F3A8-47F9-892F-DDD134237C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9413D2-F3A8-47F9-892F-DDD134237C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9413D2-F3A8-47F9-892F-DDD134237C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9413D2-F3A8-47F9-892F-DDD134237C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{062C2F2B-1A45-4760-827C-0788C1B8414E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{062C2F2B-1A45-4760-827C-0788C1B8414E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{062C2F2B-1A45-4760-827C-0788C1B8414E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{062C2F2B-1A45-4760-827C-0788C1B8414E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE1EB8E-5A29-4947-A265-6DE819BB4951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE1EB8E-5A29-4947-A265-6DE819BB4951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE1EB8E-5A29-4947-A265-6DE819BB4951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE1EB8E-5A29-4947-A265-6DE819BB4951}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

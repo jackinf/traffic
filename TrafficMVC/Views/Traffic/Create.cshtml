@@ -1,0 +1,158 @@
+﻿@model Infrastructure.Models.Traffic
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<div class="container" id="imo">
+    <label for="imo_search">Search marine traffic data by IMO: </label>
+    <input type="text" name="imo_search" placeholder="e.g 9305178" />
+    <a href="#" ng-click="searchMarineTrafficData()" class="btn btn-primary" id="searchBtn">Search</a>
+    <img src="~/Images/loading.gif" id="img_loading" style="display: none" />
+</div>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Traffic</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+
+            <div class="form-group" >
+                @Html.LabelFor(model => model.IMO, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IMO)
+                    @Html.ValidationMessageFor(model => model.IMO)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShipType, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShipType)
+                    @Html.ValidationMessageFor(model => model.ShipType)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MMSI, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MMSI)
+                    @Html.ValidationMessageFor(model => model.MMSI)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GrossTonnage, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GrossTonnage)
+                    @Html.ValidationMessageFor(model => model.GrossTonnage)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DeathWeightTonnage, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DeathWeightTonnage)
+                    @Html.ValidationMessageFor(model => model.DeathWeightTonnage)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.YearOfBuild, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.YearOfBuild, new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.YearOfBuild)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Builder, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Builder)
+                    @Html.ValidationMessageFor(model => model.Builder)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Flag, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Flag)
+                    @Html.ValidationMessageFor(model => model.Flag)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HomePort, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HomePort)
+                    @Html.ValidationMessageFor(model => model.HomePort)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ClassSociety, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ClassSociety)
+                    @Html.ValidationMessageFor(model => model.ClassSociety)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Manager, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Manager)
+                    @Html.ValidationMessageFor(model => model.Manager)
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.Owner, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Owner)
+                    @Html.ValidationMessageFor(model => model.Owner)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FormerNames, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FormerNames)
+                    @Html.ValidationMessageFor(model => model.FormerNames)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
+@section scripts
+{
+    <script src="~/Scripts/helpers/trafficCreateHelper.js"></script>
+}

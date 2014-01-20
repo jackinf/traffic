@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Infrastructure.Models.Traffic>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ShipType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MMSI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossTonnage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeathWeightTonnage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearOfBuild)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Builder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomePort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassSociety)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manager)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormerNames)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(c => c.UpdateDate)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ShipType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MMSI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossTonnage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeathWeightTonnage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfBuild)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Builder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomePort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassSociety)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Manager)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Owner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormerNames)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
