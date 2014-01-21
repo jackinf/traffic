@@ -32,6 +32,25 @@ namespace TrafficMVC.Controllers
             return Json(cmd.marineTrafficData, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult SaveChanges(int id, string name)
+        {
+            try
+            {
+                var traffic = OpenErpConnection.GetConnection().GetEntity<Traffic>(c => c.ID == id);
+                if (traffic != null)
+                {
+                    traffic.Name = name;
+                    OpenErpConnection.GetConnection().UpdateEntity(traffic);
+                }
+                return Json(new {Success = true, Traffic = traffic});
+            }
+            catch
+            {
+                return Json(new {Success = false});
+            }
+
+        }
+
         private void AddRowNumbersToTraffics(List<Traffic> traffics)
         {
             for (var i = 1; i <= traffics.Count; i++)

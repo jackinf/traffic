@@ -1,6 +1,10 @@
 ﻿var myApp = angular.module('myApp', ['ngResource']);
 
+
+
 function TrafficCtrl($scope, $http) {
+    // TODO: add other 10+ parameters
+    var backupItem = { Name: "" };
 
     $scope.showSearchMenu = true;
     $scope.showColumnMenu = false;
@@ -101,5 +105,23 @@ function TrafficCtrl($scope, $http) {
 
     $.fn.clearSearchFieldByAllData = function() {
         $scope.search.$ = undefined;
+    };
+
+    $scope.openEditMenu = function (item) {
+        $("#myModal").modal('show');
+        backupItem.Name = item.Name;
+        $scope.editItem = item;
+    };
+
+    $scope.editSaveChanges = function (item) {
+        // TODO: add other 10+ parameters to url
+        $http.post("/Ajax/SaveChanges?id=" + item.ID + "&name=" + item.Name).success(function(data) {
+            $("#myModal").modal('hide');
+        });
+    };
+
+    $scope.editDiscardChanges = function (item) {
+        // TODO: add other 10+ parameters
+        $scope.editItem.Name = backupItem.Name;
     };
 }

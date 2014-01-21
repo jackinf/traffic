@@ -34,7 +34,7 @@
 
                 </div>
                 <div class="col-md-3">
-                    <label for="name">Name:</label>
+                    <label for="name">Ship Name:</label>
                     <input type="text" name="name" ng-model="search.Name" class="form-control">
                     <label for="name">Class Society:</label>
                     <input type="text" name="name" ng-model="search.ClassSociety" class="form-control">
@@ -101,9 +101,42 @@
             <td>{{ship.Manager}}</td>
             <td>{{ship.Owner}}</td>
             <td>{{ship.YearOfBuild}}</td>*@
-                <td><a href="/Traffic/Edit/{{ship.ID}}">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>
+                @*<td><a href="/Traffic/Edit/{{ship.ID}}">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>*@
+                <td><a ng-click="openEditMenu(ship)" class="btn btn-default btn-xs">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}" class="btn btn-danger btn-xs">Delete</a></td>
             </tr>
         </table>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Edit menu</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" name="edit_name" ng-model="editItem.Name" ng-value="editItem.Name" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.IMO" ng-value="editItem.IMO" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.ShipType" ng-value="editItem.ShipType" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.MMSI" ng-value="editItem.MMSI" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.GrossTonnage" ng-value="editItem.GrossTonnage" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.DeathWeightTonnage" ng-value="editItem.DeathWeightTonnage" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.YearOfBuild" ng-value="editItem.YearOfBuild" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.Builder" ng-value="editItem.Builder" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.Flag" ng-value="editItem.Flag" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.HomePort" ng-value="editItem.HomePort" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.ClassSociety" ng-value="editItem.ClassSociety" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.Manager" ng-value="editItem.Manager" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.Owner" ng-value="editItem.Owner" class="form-control" />
+                        <input type="text" name="edit_name" ng-model="editItem.FormerNames" ng-value="editItem.FormerNames" class="form-control" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="editDiscardChanges(editItem)">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="editSaveChanges(editItem)">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
 </div>
 
@@ -112,3 +145,4 @@
     <script src="~/Scripts/angular-resource.js"></script>
     <script src="~/Scripts/dynamicList/main.js"> </script>
 }
+
