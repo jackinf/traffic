@@ -68,7 +68,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.YearOfBuild, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.YearOfBuild)
+                @Html.TextBoxFor(model => model.YearOfBuild, new { @class="form-control"})
                 @Html.ValidationMessageFor(model => model.YearOfBuild)
             </div>
         </div>

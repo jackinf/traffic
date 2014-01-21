@@ -5,6 +5,17 @@ function TrafficCtrl($scope, $http) {
     $scope.showSearchMenu = false;
     $scope.showColumnMenu = false;
 
+    $scope.search = {
+        $: undefined,
+        ID: undefined,
+        UpdateDate: undefined,
+        Flag: undefined,
+        IMO: undefined,
+        ShipType: undefined,
+        Owner: undefined,
+        Name: undefined,
+        ClassSociety: undefined
+    };
 
     $http.get("/Ajax/GetAllTraffic").success(function (data) {
         $scope.traffic = data;
@@ -12,6 +23,10 @@ function TrafficCtrl($scope, $http) {
 
     $scope.toggleSearchMenuVisibility = function() {
         $scope.showSearchMenu = !$scope.showSearchMenu;
+        if (!$scope.showSearchMenu)
+            $.fn.clearSearchMenuFields();
+        else
+            $.fn.clearSearchFieldByAllData();
     };
     $scope.toggleColumnMenuVisibility = function() {
         $scope.showColumnMenu = !$scope.showColumnMenu;
@@ -66,5 +81,20 @@ function TrafficCtrl($scope, $http) {
             default:
                 break;
         }
+    };
+
+    $.fn.clearSearchMenuFields = function () {
+        $scope.search.ID = undefined;
+        $scope.search.UpdateDate = undefined;
+        $scope.search.Flag = undefined;
+        $scope.search.IMO = undefined;
+        $scope.search.ShipType = undefined;
+        $scope.search.Owner = undefined;
+        $scope.search.Name = undefined;
+        $scope.search.ClassSociety = undefined;
+    };
+
+    $.fn.clearSearchFieldByAllData = function() {
+        $scope.search.$ = undefined;
     };
 }

@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using Core;
 using Infrastructure.Models;
-using TrafficMVC.Commands;
 
 namespace TrafficMVC.Controllers
 {
@@ -119,13 +118,6 @@ namespace TrafficMVC.Controllers
             {
                 return View();
             }
-        }
-
-        public ActionResult ParseMarineTrafficData(string imo)
-        {
-            var cmd = new SearchMarineTraffic(imo);
-            cmd.Execute();
-            return Json(cmd.marineTrafficData, JsonRequestBehavior.AllowGet);
         }
 
         private bool IsLoggedIn()

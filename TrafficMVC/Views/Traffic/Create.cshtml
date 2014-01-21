@@ -8,7 +8,7 @@
 
 <div class="container" id="imo">
     <label for="imo_search">Search marine traffic data by IMO: </label>
-    <input type="text" name="imo_search" placeholder="e.g 9305178" />
+    <input type="text" name="imo_search" />
     <a href="#" ng-click="searchMarineTrafficData()" class="btn btn-primary" id="searchBtn">Search</a>
     <img src="~/Images/loading.gif" id="img_loading" style="display: none" />
 </div>
@@ -143,9 +143,8 @@
         </div>
     }
     
-    <h3>Unused fields</h3>
-    <table id="parsedTable" class="table table-striped">
-    </table>
+    <h3 id="unusedFieldsHeader" style="display: none">List of unused fields:</h3>
+    <table id="parsedTable" class="table table-striped"></table>
 </div>
 
 <div>

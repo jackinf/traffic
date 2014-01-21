@@ -26,7 +26,7 @@
 
         var search_value = $("input[name='imo_search']").val();
         // Get data asyncroniously from http://maritime-connector.com
-        $.getJSON("/Traffic/ParseMarineTrafficData?imo=" + search_value, function (data) {
+        $.getJSON("/Ajax/ParseMarineTrafficData?imo=" + search_value, function (data) {
             if (data["Success"] == "true") {
                 // Removes all forbidden symbols
                 for (var key in data) {
@@ -41,23 +41,11 @@
                     $('#myModal').modal('show');
                     delete data["Duplicate"];
                 }
-
-                if (data["Name of the ship"]) {
-                    input_name.val(data["Name of the ship"]);
-                    delete data["Name of the ship"];
-                }
-                if (data["IMO number"]) {
-                    input_imo.val(data["IMO number"]);
-                    delete data["IMO number"];
-                }
-                if (data["Type of ship"]) {
-                    input_ship_type.val(data["Type of ship"]);
-                    delete data["Type of ship"];
-                }
-                if (data["MMSI"]) {
-                    input_mmsi.val(data["MMSI"]);
-                    delete data["MMSI"];
-                }
+                
+                $.fn.fillField(input_name, "Name of the ship", data);
+                $.fn.fillField(input_imo, "IMO number", data);
+                $.fn.fillField(input_ship_type, "Type of ship", data);
+                $.fn.fillField(input_mmsi, "MMSI", data);
                 if (data["Gross tonnage"]) {
                     var gt = data["Gross tonnage"];
                     gt = gt.indexOf("tons") != -1 ? gt.replace("tons", "") : gt;
@@ -72,62 +60,50 @@
                         input_dwt.val(dwt.trim());
                     delete data["DWT"];
                 }
-                if (data["Year of build"]) {
-                    input_yob.val(data["Year of build"]);
-                    delete data["Year of build"];
-                }
-                if (data["Builder"]) {
-                    input_builder.val(data["Builder"]);
-                    delete data["Builder"];
-                }
-                if (data["Last known flag"]) {
-                    input_flag.val(data["Last known flag"]);
-                    delete data["Last known flag"];
-                }
-                if (data["Flag"]) {
-                    input_flag.val(data["Flag"]);
-                    delete data["Flag"];
-                }
-                if (data["Home port"]) {
-                    input_home_port.val(data["Home port"]);
-                    delete data["Home port"];
-                }
-                if (data["Class society"]) {
-                    input_class_society.val(data["Class society"]);
-                    delete data["Class society"];
-                }
+                $.fn.fillField(input_yob, "Year of build", data);
+                $.fn.fillField(input_builder, "Builder", data);
+                $.fn.fillField(input_flag, "Last known flag", data);
+                $.fn.fillField(input_flag, "Flag", data);
+                $.fn.fillField(input_home_port, "Home port", data);
+                $.fn.fillField(input_class_society, "Class society", data);
                 if (data["Manager & owner"]) {
                     input_manager.val(data["Manager & owner"]);
                     input_owner.val(data["Manager & owner"]);
                     delete data["Manager & owner"];
                 } else {
-                    if (data["Manager"]) {
-                        input_manager.val(data["Manager"]);
-                        delete data["Manager"];
-                    }
-                    if (data["Owner"]) {
-                        input_owner.val(data["Owner"]);
-                        delete data["Owner"];
-                    }
+                    $.fn.fillField(input_manager, "Manager", data);
+                    $.fn.fillField(input_owner, "Owner", data);
                 }
-                if (data["Former names"]) {
-                    input_former_names.val(data["Former names"]);
-                    delete data["Former names"];
-                }
+                $.fn.fillField(input_former_names, "Former names", data);
+                
                 $("#imo").append("<a id='externalLink' href='http://maritime-connector.com/ship/" + search_value + "/' class='btn btn-default'>See on maritime-connector</a>");
+
                 delete data["Success"];
                 delete data["Duplicate"];
+
+                // show header if there are any unused fields
+                if (Object.keys(data).length > 0)
+                    $("#unusedFieldsHeader").show();
+                else
+                    $("#unusedFieldsHeader").hide();
+                
                 for (var key1 in data) {
                     var value1 = data[key1];
                     $("#parsedTable").append("<tr><th>" + key1 + "</th><td>" + value1 + "</td></tr>");
                 }
             } else {
-                console.log("fail");
                 $.fn.clearData();
             }
             img_loading.hide();
         });
     });
+    
+    $.fn.fillField = function (inputField, arrayKey, resultArray) {
+        if (resultArray[arrayKey]) {
+            inputField.val(resultArray[arrayKey]);
+            delete resultArray[arrayKey];
+        }
+    };
 
     $("#noBtn").on("click", function() {
         $.fn.clearData();
@@ -154,5 +130,7 @@
     $.fn.replaceAll = function(find, replace, str) {
         return str.replace(new RegExp(find, 'g'), replace);
     };
+    
+
 
 });
