@@ -2,7 +2,7 @@
 
 function TrafficCtrl($scope, $http) {
 
-    $scope.showSearchMenu = false;
+    $scope.showSearchMenu = true;
     $scope.showColumnMenu = false;
 
     $scope.search = {
@@ -39,6 +39,7 @@ function TrafficCtrl($scope, $http) {
     $scope.showColumnShipType = true;
     $scope.showColumnClassSociety = true;
     $scope.showColumnFlag = true;
+    $scope.showColumnOwner = true;
 
     $scope.activeColumnBtnID = 'active';
     $scope.activeColumnBtnUpdateDate = 'active';
@@ -47,6 +48,7 @@ function TrafficCtrl($scope, $http) {
     $scope.activeColumnBtnShipType = 'active';
     $scope.activeColumnBtnClassSociety = 'active';
     $scope.activeColumnBtnFlag = 'active';
+    $scope.activeColumnBtnOwner = 'active';
 
     $scope.reverse = false;
     
@@ -78,6 +80,9 @@ function TrafficCtrl($scope, $http) {
             case 7:
                 $scope.showColumnFlag = !$scope.showColumnFlag;
                 $scope.activeColumnBtnFlag = $scope.showColumnFlag ? 'active' : '';
+            case 8:
+                $scope.showColumnOwner = !$scope.showColumnOwner;
+                $scope.activeColumnBtnOwner = $scope.showColumnOwner ? 'active' : '';
             default:
                 break;
         }

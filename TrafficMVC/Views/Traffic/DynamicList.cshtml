@@ -24,22 +24,26 @@
                     <input type="text" name="id" ng-model="search.ID" class="form-control">
                     <label for="updateDate">Update Date:</label>
                     <input type="text" name="updateDate" ng-model="search.UpdateDate" class="form-control">
-                    <label for="flag">Flag:</label>
-                    <input type="text" name="flag" ng-model="search.Flag" class="form-control">
+
                 </div>
                 <div class="col-md-3">
                     <label for="imo">IMO:</label>
                     <input type="text" name="imo" ng-model="search.IMO" class="form-control">
                     <label for="shipType">Ship Type:</label>
                     <input type="text" name="shipType" ng-model="search.ShipType" class="form-control">
-                    <label for="owner">Owner:</label>
-                    <input type="text" name="owner" ng-model="search.Owner" class="form-control">
+
                 </div>
                 <div class="col-md-3">
                     <label for="name">Name:</label>
                     <input type="text" name="name" ng-model="search.Name" class="form-control">
                     <label for="name">Class Society:</label>
                     <input type="text" name="name" ng-model="search.ClassSociety" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="flag">Flag:</label>
+                    <input type="text" name="flag" ng-model="search.Flag" class="form-control">
+                    <label for="owner">Owner:</label>
+                    <input type="text" name="owner" ng-model="search.Owner" class="form-control">
                 </div>
             </div>
             <div class="panel-body" ng-show="showColumnMenu">
@@ -52,6 +56,7 @@
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnShipType" ng-click="toggleColumnVisibility(5);">Ship Type</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnClassSociety" ng-click="toggleColumnVisibility(6);">Class Society</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnFlag" ng-click="toggleColumnVisibility(7);">Flag</button>
+                    <button type="button" class="btn btn-default" ng-class="activeColumnBtnOwner" ng-click="toggleColumnVisibility(8);">Owner</button>
                 </div>
             </div>
         </div>
@@ -65,6 +70,7 @@
                 <th ng-show="showColumnShipType" ng-click="predicate = 'ShipType'; reverse=!reverse"><a href="#">Ship Type</a></th>
                 <th ng-show="showColumnClassSociety" ng-click="predicate = 'ClassSociety'; reverse=!reverse"><a href="#">Class Society</a></th>
                 <th ng-show="showColumnFlag" ng-click="predicate = 'Flag'; reverse=!reverse"><a href="#">Flag</a></th>
+                <th ng-show="showColumnOwner">Owner</th>
                 <th>Actions</th>
                 @*<th ng-show="showColumnBuilder">Builder</th>
                 <th ng-show="showColumnDWT">Death Weight Tonnage</th>
@@ -85,6 +91,7 @@
                 <td ng-show="showColumnShipType">{{ship.ShipType}}</td>
                 <td ng-show="showColumnClassSociety">{{ship.ClassSociety}}</td>
                 <td ng-show="showColumnFlag">{{ship.Flag}}</td>
+                <td ng-show="showColumnOwner">{{ship.Owner}}</td>
                 @*<td>{{ship.Builder}}</td>
             <td>{{ship.DeathWeightTonnage}}</td>
             <td>{{ship.FormerNames}}</td>
