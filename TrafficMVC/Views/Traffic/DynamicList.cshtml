@@ -19,29 +19,41 @@
                 <input type="text" name="universal" ng-model="search.$" class="form-control" />
             </div>
             <div class="panel-body" ng-show="showSearchMenu">
-                <div class="col-md-3">
+                <div class="col-md-1">
                     <label for="id">ID:</label>
                     <input type="text" name="id" ng-model="search.ID" class="form-control">
+                </div>
+                <div class="col-md-2">
                     <label for="updateDate">Update Date:</label>
                     <input type="text" name="updateDate" ng-model="search.UpdateDate" class="form-control">
-
                 </div>
                 <div class="col-md-3">
                     <label for="imo">IMO:</label>
                     <input type="text" name="imo" ng-model="search.IMO" class="form-control">
-                    <label for="shipType">Ship Type:</label>
-                    <input type="text" name="shipType" ng-model="search.ShipType" class="form-control">
-
                 </div>
                 <div class="col-md-3">
-                    <label for="name">Ship Name:</label>
-                    <input type="text" name="name" ng-model="search.Name" class="form-control">
-                    <label for="name">Class Society:</label>
-                    <input type="text" name="name" ng-model="search.ClassSociety" class="form-control">
+                    <label for="shipType">Ship Type:</label>
+                    <input type="text" name="shipType" ng-model="search.ShipType" class="form-control">
                 </div>
                 <div class="col-md-3">
                     <label for="flag">Flag:</label>
                     <input type="text" name="flag" ng-model="search.Flag" class="form-control">
+                </div>
+            </div>
+            <div class="panel-body" ng-show="showSearchMenu">
+                <div class="col-md-3">
+                    <label for="updateDate">MMSI:</label>
+                    <input type="text" name="updateDate" ng-model="search.MMSI" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="name">Ship Name:</label>
+                    <input type="text" name="name" ng-model="search.Name" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="name">Class Society:</label>
+                    <input type="text" name="name" ng-model="search.ClassSociety" class="form-control">
+                </div>
+                <div class="col-md-3">
                     <label for="owner">Owner:</label>
                     <input type="text" name="owner" ng-model="search.Owner" class="form-control">
                 </div>
@@ -49,11 +61,13 @@
             <div class="panel-body" ng-show="showColumnMenu">
                 <h3>Toggle visibility: </h3>
                 <div class="btn-group">
+                    <button type="button" class="btn btn-default" ng-class="activeColumnBtnRowNumber" ng-click="toggleColumnVisibility(0);">Row Number</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnID" ng-click="toggleColumnVisibility(1);">ID</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnUpdateDate" ng-click="toggleColumnVisibility(2);">Update date</button>
-                    <button type="button" class="btn btn-default" ng-class="activeColumnBtnName" ng-click="toggleColumnVisibility(3);">Name</button>
+                    <button type="button" class="btn btn-default" ng-class="activeColumnBtnName" ng-click="toggleColumnVisibility(3);">Ship Name</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnIMO" ng-click="toggleColumnVisibility(4);">IMO</button>
-                    <button type="button" class="btn btn-default" ng-class="activeColumnBtnShipType" ng-click="toggleColumnVisibility(5);">Ship Type</button>
+                    <button type="button" class="btn btn-default" ng-class="activeColumnBtnOwner" ng-click="toggleColumnVisibility(9);">MMSI</button>
+                    <button type="button" class="btn btn-default" ng-class="activeColumnBtnShipType" ng-click="toggleColumnVisibility(5);">Type</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnClassSociety" ng-click="toggleColumnVisibility(6);">Class Society</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnFlag" ng-click="toggleColumnVisibility(7);">Flag</button>
                     <button type="button" class="btn btn-default" ng-class="activeColumnBtnOwner" ng-click="toggleColumnVisibility(8);">Owner</button>
@@ -62,73 +76,88 @@
         </div>
         <table class="table table-striped">
             <tr>
-                <th ng-click="predicate = 'RowNumber'; reverse=!reverse"><a href="#">#</a></th>
+                <th ng-show="showColumnRowNumber" ng-click="predicate = 'RowNumber'; reverse=!reverse"><a href="#">#</a></th>
                 <th ng-show="showColumnID" ng-click="predicate = 'ID'; reverse=!reverse"><a href="#">ID</a></th>
                 <th ng-show="showColumnUpdateDate" ng-click="predicate = 'UpdateDate'; reverse=!reverse"><a href="#">Update date</a></th>
-                <th ng-show="showColumnName" ng-click="predicate = 'Name'; reverse=!reverse"><a href="#">Name</a></th>
+                <th ng-show="showColumnName" ng-click="predicate = 'Name'; reverse=!reverse"><a href="#">Ship Name</a></th>
                 <th ng-show="showColumnIMO" ng-click="predicate = 'IMO'; reverse=!reverse"><a href="#">IMO</a></th>
-                <th ng-show="showColumnShipType" ng-click="predicate = 'ShipType'; reverse=!reverse"><a href="#">Ship Type</a></th>
+                <th ng-show="showColumnMMSI" ng-click="predicate = 'MMSI'; reverse=!reverse"><a href="#">MMSI</a></th>
+                <th ng-show="showColumnShipType" ng-click="predicate = 'ShipType'; reverse=!reverse"><a href="#">Type</a></th>
                 <th ng-show="showColumnClassSociety" ng-click="predicate = 'ClassSociety'; reverse=!reverse"><a href="#">Class Society</a></th>
                 <th ng-show="showColumnFlag" ng-click="predicate = 'Flag'; reverse=!reverse"><a href="#">Flag</a></th>
-                <th ng-show="showColumnOwner">Owner</th>
+                <th ng-show="showColumnOwner" ng-click="predicate = 'Owner'; reverse=!reverse"><a href="#">Owner</a></th>
                 <th>Actions</th>
                 @*<th ng-show="showColumnBuilder">Builder</th>
-                <th ng-show="showColumnDWT">Death Weight Tonnage</th>
-                <th ng-show="showColumnFormerNames">Former Names</th>
-                <th ng-show="showColumnGT">Gross Tonnage</th>
-                <th ng-show="showColumnHomePort">Home Port</th>
-                <th ng-show="showColumnMMSI">MMSI</th>
-                <th ng-show="showColumnManager">Manager</th>
-                <th ng-show="showColumnOwner">Owner</th>
-                <th ng-show="showColumnYOB">Year Of Build</th>*@
+                    <th ng-show="showColumnDWT">Death Weight Tonnage</th>
+                    <th ng-show="showColumnFormerNames">Former Names</th>
+                    <th ng-show="showColumnGT">Gross Tonnage</th>
+                    <th ng-show="showColumnHomePort">Home Port</th>
+                    <th ng-show="showColumnManager">Manager</th>
+                    <th ng-show="showColumnOwner">Owner</th>
+                    <th ng-show="showColumnYOB">Year Of Build</th>*@
             </tr>
             <tr ng-repeat="ship in traffic | filter:search | orderBy:predicate:reverse">
-                <td>{{ship.RowNumber}}</td>
+                <td ng-show="showColumnRowNumber">{{$index+1}}</td>
                 <td ng-show="showColumnID">{{ship.ID}}</td>
                 <td ng-show="showColumnUpdateDate">{{ship.UpdateDate}}</td>
                 <td ng-show="showColumnName">{{ship.Name}}</td>
                 <td ng-show="showColumnIMO">{{ship.IMO}}</td>
+                <td ng-show="showColumnMMSI">{{ship.MMSI}}</td>
                 <td ng-show="showColumnShipType">{{ship.ShipType}}</td>
                 <td ng-show="showColumnClassSociety">{{ship.ClassSociety}}</td>
                 <td ng-show="showColumnFlag">{{ship.Flag}}</td>
                 <td ng-show="showColumnOwner">{{ship.Owner}}</td>
                 @*<td>{{ship.Builder}}</td>
-            <td>{{ship.DeathWeightTonnage}}</td>
-            <td>{{ship.FormerNames}}</td>
-            <td>{{ship.GrossTonnage}}</td>
-            <td>{{ship.HomePort}}</td>
-            <td>{{ship.MMSI}}</td>
-            <td>{{ship.Manager}}</td>
-            <td>{{ship.Owner}}</td>
-            <td>{{ship.YearOfBuild}}</td>*@
+                    <td>{{ship.DeathWeightTonnage}}</td>
+                    <td>{{ship.FormerNames}}</td>
+                    <td>{{ship.GrossTonnage}}</td>
+                    <td>{{ship.HomePort}}</td>
+                    <td>{{ship.Manager}}</td>
+                    <td>{{ship.Owner}}</td>
+                    <td>{{ship.YearOfBuild}}</td>*@
                 @*<td><a href="/Traffic/Edit/{{ship.ID}}">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>*@
-                <td><a ng-click="openEditMenu(ship)" class="btn btn-default btn-xs">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}" class="btn btn-danger btn-xs">Delete</a></td>
+                @*<td><a ng-click="openEditMenu(ship)">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>*@
+                <td><a ng-click="openEditMenu(ship)" style="cursor: pointer">Edit</a> | <a ng-click="openDeleteMenu(ship)" style="cursor: pointer">Delete</a></td>
             </tr>
         </table>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="editDiscardChanges(editItem)">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">Edit menu</h4>
                     </div>
                     <div class="modal-body">
+                        <label for="edit_name">Ship Name</label>
                         <input type="text" name="edit_name" ng-model="editItem.Name" ng-value="editItem.Name" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.IMO" ng-value="editItem.IMO" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.ShipType" ng-value="editItem.ShipType" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.MMSI" ng-value="editItem.MMSI" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.GrossTonnage" ng-value="editItem.GrossTonnage" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.DeathWeightTonnage" ng-value="editItem.DeathWeightTonnage" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.YearOfBuild" ng-value="editItem.YearOfBuild" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.Builder" ng-value="editItem.Builder" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.Flag" ng-value="editItem.Flag" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.HomePort" ng-value="editItem.HomePort" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.ClassSociety" ng-value="editItem.ClassSociety" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.Manager" ng-value="editItem.Manager" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.Owner" ng-value="editItem.Owner" class="form-control" />
-                        <input type="text" name="edit_name" ng-model="editItem.FormerNames" ng-value="editItem.FormerNames" class="form-control" />
+                        <label for="edit_imo">IMO</label>
+                        <input type="text" name="edit_imo" ng-model="editItem.IMO" ng-value="editItem.IMO" class="form-control" />
+                        <label for="edit_shiptype">Type</label>
+                        <input type="text" name="edit_shiptype" ng-model="editItem.ShipType" ng-value="editItem.ShipType" class="form-control" />
+                        <label for="edit_mmsi">MMSI</label>
+                        <input type="text" name="edit_mmsi" ng-model="editItem.MMSI" ng-value="editItem.MMSI" class="form-control" />
+                        <label for="edit_grosstonnage">Gross Tonnage</label>
+                        <input type="text" name="edit_grosstonnage" ng-model="editItem.GrossTonnage" ng-value="editItem.GrossTonnage" class="form-control" />
+                        <label for="edit_dwt">Death Weight Tonnage</label>
+                        <input type="text" name="edit_dwt" ng-model="editItem.DeathWeightTonnage" ng-value="editItem.DeathWeightTonnage" class="form-control" />
+                        <label for="edit_yob">Year Of Build</label>
+                        <input type="text" name="edit_yob" ng-model="editItem.YearOfBuild" ng-value="editItem.YearOfBuild" class="form-control" />
+                        <label for="edit_builder">Builder</label>
+                        <input type="text" name="edit_builder" ng-model="editItem.Builder" ng-value="editItem.Builder" class="form-control" />
+                        <label for="edit_flag">Flag</label>
+                        <input type="text" name="edit_flag" ng-model="editItem.Flag" ng-value="editItem.Flag" class="form-control" />
+                        <label for="edit_homeport">Home Port</label>
+                        <input type="text" name="edit_homeport" ng-model="editItem.HomePort" ng-value="editItem.HomePort" class="form-control" />
+                        <label for="edit_cs">Class Society</label>
+                        <input type="text" name="edit_cs" ng-model="editItem.ClassSociety" ng-value="editItem.ClassSociety" class="form-control" />
+                        <label for="edit_manager">Manager</label>
+                        <input type="text" name="edit_manager" ng-model="editItem.Manager" ng-value="editItem.Manager" class="form-control" />
+                        <label for="edit_owner">Owner</label>
+                        <input type="text" name="edit_owner" ng-model="editItem.Owner" ng-value="editItem.Owner" class="form-control" />
+                        <label for="edit_fn">Former Names</label>
+                        <input type="text" name="edit_fn" ng-model="editItem.FormerNames" ng-value="editItem.FormerNames" class="form-control" />
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="editDiscardChanges(editItem)">Close</button>
@@ -137,8 +166,26 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-    </div>
-</div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="deleteModalLabel">Delete item</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Do you want to delete this item?</h2>
+                        <img src="~/Images/panic.jpg" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" ng-click="confirmDelete(deleteItem)">Delete, please!</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
 @section scripts{
     <script src="~/Scripts/angular.js"> </script>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Core;
@@ -32,7 +33,9 @@ namespace TrafficMVC.Controllers
             return Json(cmd.marineTrafficData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult SaveChanges(int id, string name)
+        public ActionResult SaveChanges(int id, string name, string imo, string shiptype,
+            string mmsi, double gt, double dwt, int yob, string builder, string flag,
+            string homeport, string cs, string manager, string owner, string fn)
         {
             try
             {
@@ -40,6 +43,19 @@ namespace TrafficMVC.Controllers
                 if (traffic != null)
                 {
                     traffic.Name = name;
+                    traffic.IMO = imo;
+                    traffic.ShipType = shiptype;
+                    traffic.MMSI = mmsi;
+                    traffic.GrossTonnage = gt;
+                    traffic.DeathWeightTonnage = dwt;
+                    traffic.YearOfBuild = yob;
+                    traffic.Builder = builder;
+                    traffic.Flag = flag;
+                    traffic.HomePort = homeport;
+                    traffic.ClassSociety = cs;
+                    traffic.Manager = manager;
+                    traffic.Owner = owner;
+                    traffic.FormerNames = fn;
                     OpenErpConnection.GetConnection().UpdateEntity(traffic);
                 }
                 return Json(new {Success = true, Traffic = traffic});
@@ -49,6 +65,21 @@ namespace TrafficMVC.Controllers
                 return Json(new {Success = false});
             }
 
+        }
+
+        [HttpPost]
+        public ActionResult DeleteRecord(int id)
+        {
+            try
+            {
+                var traffic = OpenErpConnection.GetConnection().GetEntity<Traffic>(c => c.ID == id);
+                OpenErpConnection.GetConnection().DeleteEntity(traffic);
+                return Json(new {Success = true}, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new {Success = false}, JsonRequestBehavior.AllowGet);
+            }
         }
 
         private void AddRowNumbersToTraffics(List<Traffic> traffics)
