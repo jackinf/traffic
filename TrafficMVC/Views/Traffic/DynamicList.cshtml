@@ -32,26 +32,26 @@
                     <input type="text" name="imo" ng-model="search.IMO" class="form-control">
                 </div>
                 <div class="col-md-3">
+                    <label for="name">Class Society:</label>
+                    <input type="text" name="name" ng-model="search.ClassSociety" class="form-control">
+                </div>
+                <div class="col-md-3">
                     <label for="shipType">Ship Type:</label>
                     <input type="text" name="shipType" ng-model="search.ShipType" class="form-control">
                 </div>
-                <div class="col-md-3">
-                    <label for="flag">Flag:</label>
-                    <input type="text" name="flag" ng-model="search.Flag" class="form-control">
-                </div>
             </div>
             <div class="panel-body" ng-show="showSearchMenu">
-                <div class="col-md-3">
-                    <label for="updateDate">MMSI:</label>
-                    <input type="text" name="updateDate" ng-model="search.MMSI" class="form-control">
-                </div>
                 <div class="col-md-3">
                     <label for="name">Ship Name:</label>
                     <input type="text" name="name" ng-model="search.Name" class="form-control">
                 </div>
                 <div class="col-md-3">
-                    <label for="name">Class Society:</label>
-                    <input type="text" name="name" ng-model="search.ClassSociety" class="form-control">
+                    <label for="updateDate">MMSI:</label>
+                    <input type="text" name="updateDate" ng-model="search.MMSI" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="flag">Flag:</label>
+                    <input type="text" name="flag" ng-model="search.Flag" class="form-control">
                 </div>
                 <div class="col-md-3">
                     <label for="owner">Owner:</label>
@@ -177,7 +177,7 @@
                     </div>
                     <div class="modal-body">
                         <h2>Do you want to delete this item?</h2>
-                        <img src="~/Images/panic.jpg" />
+                        <img src="~/Images/thinker.jpg" />
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
