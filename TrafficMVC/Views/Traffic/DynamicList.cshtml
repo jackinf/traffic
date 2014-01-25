@@ -13,6 +13,11 @@
                     <span ng-show="!showColumnMenu">Show column visibility menu</span>
                     <span ng-show="showColumnMenu">Hide column visibility menu</span>
                 </button>
+                <button ng-click="openDeleteMultipleMenu()" class="btn btn-danger" style="float: right">
+                    Delete multiple
+                </button>
+                 
+                <h3>Total record count: <span class="label label-primary">{{traffic.length}}</span></h3>
             </div>
             <div class="panel-body" ng-show="!showSearchMenu">
                 <label for="universal">Search by all data:</label>
@@ -74,6 +79,10 @@
                 </div>
             </div>
         </div>
+        <p id="img_loading" style="display: none">
+            Loading data...
+            <img src="~/Images/loading.gif" />
+        </p>
         <table class="table table-striped">
             <tr>
                 <th ng-show="showColumnRowNumber">#</th>
@@ -117,11 +126,14 @@
                     <td>{{ship.YearOfBuild}}</td>*@
                 @*<td><a href="/Traffic/Edit/{{ship.ID}}">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>*@
                 @*<td><a ng-click="openEditMenu(ship)">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>*@
-                <td><a ng-click="openEditMenu(ship)" style="cursor: pointer">Edit</a> | <a ng-click="openDeleteMenu(ship)" style="cursor: pointer">Delete</a></td>
+                <td>
+                    <a ng-click="openEditMenu(ship)" style="cursor: pointer">Edit</a> | <a ng-click="openDeleteMenu(ship)" style="cursor: pointer">Delete</a>
+                    <input type="checkbox" ng-model="ship.selected"/>
+                </td>
             </tr>
         </table>
 
-        <!-- Modal -->
+        <!-- Modal: Edit Menu -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -171,7 +183,7 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-        <!-- Modal -->
+        <!-- Modal: Delete item -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -190,10 +202,52 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
+        
+        <!-- Modal: Delete multiple -->
+        <div class="modal fade" id="deleteMultipleModal" tabindex="-1" role="dialog" aria-labelledby="deleteMultipleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="deleteModalLabel">Delete multiple</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h2 ng-show="deleteItemCount == 1">Do you want to delete an item?</h2>
+                        <h2 ng-show="deleteItemCount > 1">Do you want to delete {{deleteItemCount}} items?</h2>
+                        <img src="~/Images/thinker.jpg" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" ng-click="confirmDeleteMultiple()">Delete, please!</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
+        <!-- Modal: info -->
+        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">{{info.Title}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="~/Images/watson.jpg" />
+                        <h4>
+                            {{info.Body}}
+                        </h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div>
+</div>
 @section scripts{
     <script src="~/Scripts/angular.js"> </script>
-    <script src="~/Scripts/angular-resource.js"></script>
+    <script src="~/Scripts/angular-resource.js"> </script>
     <script src="~/Scripts/dynamicList/main.js"> </script>
 }
-

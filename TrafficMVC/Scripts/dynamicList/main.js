@@ -9,7 +9,7 @@ function TrafficCtrl($scope, $http) {
 
     $scope.showSearchMenu = true;
     $scope.showColumnMenu = false;
-
+    
     $scope.search = {
         $: undefined,
         ID: undefined,
@@ -23,8 +23,14 @@ function TrafficCtrl($scope, $http) {
         MMSI: undefined
     };
 
+    $("#img_loading").show();
+
     $http.get("/Ajax/GetAllTraffic").success(function (data) {
+        data.each(function(element) {
+            element["selected"] = false;
+        });
         $scope.traffic = data;
+        $("#img_loading").hide();
     });
 
     $scope.toggleSearchMenuVisibility = function() {
@@ -163,7 +169,7 @@ function TrafficCtrl($scope, $http) {
             "&owner=" + item.Owner +
             "&fn=" + item.FormerNames +
             "&link=" + item.Link
-        ).success(function (data) {
+        ).success(function () {
             $("#myModal").modal('hide');
         });
     };
@@ -171,6 +177,19 @@ function TrafficCtrl($scope, $http) {
     $scope.openDeleteMenu = function (item) {
         $("#deleteModal").modal('show');
         $scope.deleteItem = item;
+    };
+
+    $scope.openDeleteMultipleMenu = function () {
+        $scope.deleteItemCount = $scope.traffic.findAll({ 'selected': true }).length;
+        if ($scope.deleteItemCount > 0) {
+            $("#deleteMultipleModal").modal('show');
+        } else {
+            $scope.info = {                
+                Title: "No records selected",
+                Body: "Sir, in order to delete records you should select them using checkboxes"
+            };
+            $("#infoModal").modal('show');
+        }
     };
 
     $scope.confirmDelete = function (item) {
@@ -185,7 +204,7 @@ function TrafficCtrl($scope, $http) {
         });
     };
 
-    $scope.editDiscardChanges = function (item) {
+    $scope.editDiscardChanges = function () {
         $scope.editItem.Name = backupItem.Name;
         $scope.editItem.IMO = backupItem.IMO;
         $scope.editItem.ShipType = backupItem.ShipType;
@@ -201,5 +220,13 @@ function TrafficCtrl($scope, $http) {
         $scope.editItem.Owner = backupItem.Owner;
         $scope.editItem.FormerNames = backupItem.FormerNames;
         $scope.editItem.Link = backupItem.Link;
+    };
+
+    $scope.confirmDeleteMultiple = function() {
+        var res = $scope.traffic.findAll({ 'selected': true });
+        for (var i = res.length - 1; i >= 0; i--) {
+            $scope.confirmDelete(res[i]);
+        }
+        $("#deleteMultipleModal").modal('hide');
     };
 }

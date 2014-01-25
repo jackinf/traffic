@@ -150,6 +150,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\panic.jpg" />
+    <Content Include="Images\watson.jpg" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
