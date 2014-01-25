@@ -20,17 +20,17 @@ namespace TrafficMVC
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/bundles/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/Scripts/angular").Include(
+            bundles.Add(new ScriptBundle("~/bundles/Scripts/angular").Include(
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-route.js",
                 "~/Scripts/angular-resource.js",
                 "~/Scripts/app.js"));
 
-            bundles.Add(new ScriptBundle("~/Scripts/helpers").Include(
+            bundles.Add(new ScriptBundle("~/bundles/Scripts/helpers").Include(
                 "~/Scripts/helpers/sugar.js"));
         }
     }
