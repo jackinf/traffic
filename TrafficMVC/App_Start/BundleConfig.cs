@@ -29,6 +29,9 @@ namespace TrafficMVC
                 "~/Scripts/angular-route.js",
                 "~/Scripts/angular-resource.js",
                 "~/Scripts/app.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/helpers").Include(
+                "~/Scripts/helpers/sugar.js"));
         }
     }
 }

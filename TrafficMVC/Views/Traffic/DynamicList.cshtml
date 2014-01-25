@@ -76,7 +76,7 @@
         </div>
         <table class="table table-striped">
             <tr>
-                <th ng-show="showColumnRowNumber" ng-click="predicate = 'RowNumber'; reverse=!reverse"><a href="#">#</a></th>
+                <th ng-show="showColumnRowNumber">#</th>
                 <th ng-show="showColumnID" ng-click="predicate = 'ID'; reverse=!reverse"><a href="#">ID</a></th>
                 <th ng-show="showColumnUpdateDate" ng-click="predicate = 'UpdateDate'; reverse=!reverse"><a href="#">Update date</a></th>
                 <th ng-show="showColumnName" ng-click="predicate = 'Name'; reverse=!reverse"><a href="#">Ship Name</a></th>
@@ -158,6 +158,10 @@
                         <input type="text" name="edit_owner" ng-model="editItem.Owner" ng-value="editItem.Owner" class="form-control" />
                         <label for="edit_fn">Former Names</label>
                         <input type="text" name="edit_fn" ng-model="editItem.FormerNames" ng-value="editItem.FormerNames" class="form-control" />
+                        <label for="edit_fn">Link</label>
+                        <input type="text" name="edit_link" ng-model="editItem.Link" ng-value="editItem.Link" class="form-control" />
+                        <a href="{{editItem.Link}}">Link</a>
+                        Hint: Ctrl + click to open in new tab
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="editDiscardChanges(editItem)">Close</button>

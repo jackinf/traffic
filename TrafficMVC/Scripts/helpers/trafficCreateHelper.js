@@ -25,15 +25,16 @@
             external_link.remove();
 
         var search_value = $("input[name='imo_search']").val();
-        // Get data asyncroniously from http://maritime-connector.com
+        // Get data asyncroniously by IMO from http://maritime-connector.com
         $.getJSON("/Ajax/ParseMarineTrafficData?imo=" + search_value, function (data) {
             if (data["Success"] == "true") {
-                // Removes all forbidden symbols
+                // Convert all forbidden symbols specified as keys into values
+                var convertSymbols = { "<br>": " ", "<": " ", ">": " ", "Â": "", "´": "'" };
                 for (var key in data) {
                     var value = data[key];
-                    value = $.fn.replaceAll("<br>", " ", value);
-                    value = $.fn.replaceAll("<", " ", value);
-                    value = $.fn.replaceAll(">", " ", value);
+                    for (var convertFrom in convertSymbols) {
+                        value = $.fn.replaceAll(convertFrom, convertSymbols[convertFrom], value);
+                    }
                     data[key] = value;
                 }
 
@@ -77,6 +78,7 @@
                 $.fn.fillField(input_former_names, "Former names", data);
                 
                 $("#imo").append("<a id='externalLink' href='http://maritime-connector.com/ship/" + search_value + "/' class='btn btn-default'>See on maritime-connector</a>");
+                $("input[name='Link']").val("http://maritime-connector.com/ship/" + search_value + "/");
 
                 delete data["Success"];
                 delete data["Duplicate"];
@@ -130,7 +132,5 @@
     $.fn.replaceAll = function(find, replace, str) {
         return str.replace(new RegExp(find, 'g'), replace);
     };
-    
-
 
 });

@@ -4,7 +4,7 @@ function TrafficCtrl($scope, $http) {
     var backupItem = {
         Name: "", IMO: "", ShipType: "", MMSI: "", GrossTonnage: "", DeathWeightTonnage: "",
         YearOfBuild: "", Builder: "", Flag: "", HomePort: "", ClassSociety: "", Manager: "",
-        Owner: "", FormerNames: ""
+        Owner: "", FormerNames: "", Link: ""
     };
 
     $scope.showSearchMenu = true;
@@ -142,6 +142,7 @@ function TrafficCtrl($scope, $http) {
         backupItem.Manager = item.Manager;
         backupItem.Owner = item.Owner;
         backupItem.FormerNames = item.FormerNames;
+        backupItem.Link = item.Link;
         $scope.editItem = item;
     };
 
@@ -160,7 +161,8 @@ function TrafficCtrl($scope, $http) {
             "&cs=" + item.ClassSociety + 
             "&manager=" + item.Manager +
             "&owner=" + item.Owner +
-            "&fn=" + item.FormerNames
+            "&fn=" + item.FormerNames +
+            "&link=" + item.Link
         ).success(function (data) {
             $("#myModal").modal('hide');
         });
@@ -173,15 +175,12 @@ function TrafficCtrl($scope, $http) {
 
     $scope.confirmDelete = function (item) {
         var deleteID = item.ID;
-        $http.post("/Ajax/DeleteRecord?id=" + deleteID).success(function(data) {
+        $http.post("/Ajax/DeleteRecord?id=" + deleteID).success(function (data) {
             if (data["Success"]) {
-                $.each($scope.traffic, function (i) {
-                    if ($scope.traffic[i].ID === deleteID) {
-                        $scope.traffic.splice(i, 1);
-                    }
-                    return false;
-                });
+                $scope.traffic.remove(function (el) { return el.ID === deleteID; });
                 $("#deleteModal").modal('hide');
+            } else {
+                console.log('not success');
             }
         });
     };
@@ -201,5 +200,6 @@ function TrafficCtrl($scope, $http) {
         $scope.editItem.Manager = backupItem.Manager;
         $scope.editItem.Owner = backupItem.Owner;
         $scope.editItem.FormerNames = backupItem.FormerNames;
+        $scope.editItem.Link = backupItem.Link;
     };
 }

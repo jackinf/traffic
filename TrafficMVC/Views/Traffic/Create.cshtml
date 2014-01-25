@@ -134,6 +134,8 @@
                     @Html.ValidationMessageFor(model => model.FormerNames)
                 </div>
             </div>
+            
+            @Html.HiddenFor(model => model.Link)
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">

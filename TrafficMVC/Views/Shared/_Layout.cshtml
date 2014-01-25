@@ -6,6 +6,11 @@
     <title>@ViewBag.Title - Marine Traffic Database Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
+    @Scripts.Render("~/Scripts/helpers")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -15,9 +20,9 @@
                 @Html.ActionLink("Application name", "Index", "Traffic", null, new { @class = "navbar-brand" })
             </div>
             
-            <ul class="nav navbar-nav navbar-right">
+            @*<ul class="nav navbar-nav navbar-right">
                 <li><a href="/Home/Disconnect">Disconnect</a></li>
-            </ul>
+            </ul>*@
         </div>
         
     </div>
@@ -29,8 +34,5 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

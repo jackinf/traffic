@@ -57,7 +57,11 @@ namespace Infrastructure.Models
         [DisplayName("Former Names")]
         [OpenErpMap("former_names")]
         public string FormerNames { get; set; }
-        public int RowNumber { get; set; }
+        [DisplayName("Link")]
+        [OpenErpMap("link")]
+        public string Link { get; set; }
+
+        //public int RowNumber { get; set; }
         /*
          *  Variables for replacing primary keys
          */

@@ -16,8 +16,8 @@ namespace TrafficMVC.Controllers
         {
             try
             {
-                var traffics = OpenErpConnection.GetConnection().GetEntities<Traffic>(c => true).OrderByDescending(c => c.UpdateDate).ToList();
-                AddRowNumbersToTraffics(traffics);
+                var traffics = OpenErpConnection.GetConnection().GetEntities<Traffic>(c => true).ToList();
+                //AddRowNumbersToTraffics(traffics);
                 return Json(traffics, JsonRequestBehavior.AllowGet);
             }
             catch
@@ -79,14 +79,6 @@ namespace TrafficMVC.Controllers
             catch
             {
                 return Json(new {Success = false}, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        private void AddRowNumbersToTraffics(List<Traffic> traffics)
-        {
-            for (var i = 1; i <= traffics.Count; i++)
-            {
-                traffics[i - 1].RowNumber = i;
             }
         }
 	}

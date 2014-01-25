@@ -161,6 +161,7 @@
     <None Include="Properties\PublishProfiles\marinetraffic.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dynamicList\main.js" />
+    <Content Include="Scripts\helpers\sugar.js" />
     <Content Include="Scripts\helpers\trafficCreateHelper.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
