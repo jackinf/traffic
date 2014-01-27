@@ -30,8 +30,12 @@ namespace TrafficMVC
                 "~/Scripts/angular-resource.js",
                 "~/Scripts/app.js"));
 
+            bundles.Add(new StyleBundle("~/bundles/Content/helpers").Include(
+                "~/Content/flick/jquery-ui-1.10.4.custom.min.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/Scripts/helpers").Include(
-                "~/Scripts/helpers/sugar.js"));
+                "~/Scripts/helpers/sugar.js",
+                "~/Scripts/helpers/jquery-ui-1.10.4.autocomplete.min.js"));
         }
     }
 }

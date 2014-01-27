@@ -31,6 +31,18 @@ function TrafficCtrl($scope, $http) {
         });
         $scope.traffic = data;
         $("#img_loading").hide();
+
+        var owners = [];
+        data.each(function (element) {
+            var owner = element["Owner"];
+            if (owner != undefined && owner != '')
+                owners.push(owner);
+        });
+
+        // enable autocomplete
+        $("input[name='owner']").autocomplete({
+            source: owners
+        });
     });
 
     $scope.toggleSearchMenuVisibility = function() {

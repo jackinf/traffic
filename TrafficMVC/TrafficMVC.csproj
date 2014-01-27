@@ -144,6 +144,21 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flick\images\animated-overlay.gif" />
+    <Content Include="Content\flick\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\flick\images\ui-bg_flat_0_eeeeee_40x100.png" />
+    <Content Include="Content\flick\images\ui-bg_flat_55_ffffff_40x100.png" />
+    <Content Include="Content\flick\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\flick\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\flick\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png" />
+    <Content Include="Content\flick\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
+    <Content Include="Content\flick\images\ui-bg_highlight-soft_50_dddddd_1x100.png" />
+    <Content Include="Content\flick\images\ui-icons_0073ea_256x240.png" />
+    <Content Include="Content\flick\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\flick\images\ui-icons_666666_256x240.png" />
+    <Content Include="Content\flick\images\ui-icons_ff0084_256x240.png" />
+    <Content Include="Content\flick\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\flick\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Images\loading.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -162,6 +177,7 @@
     <None Include="Properties\PublishProfiles\marinetraffic.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dynamicList\main.js" />
+    <Content Include="Scripts\helpers\jquery-ui-1.10.4.autocomplete.min.js" />
     <Content Include="Scripts\helpers\sugar.js" />
     <Content Include="Scripts\helpers\trafficCreateHelper.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
