@@ -17,13 +17,11 @@ namespace TrafficMVC.Controllers
             return View();
         }
 
-        public ActionResult GetOwners(string searchValue)
+        public ActionResult GetOwners()
         {
             var connection = OpenErpConnection.GetConnection();
-            var entities = connection.GetEntities<Traffic>(c => true).ToList();
-            var notNullEntities = entities.Where(c => c.Owner != null).Take(20);
-            var foundOwners = notNullEntities.Distinct().ToList();
-            return Json(new { data = new { results = foundOwners}}, JsonRequestBehavior.AllowGet);
+            var owners = connection.GetEntities<Traffic>(c => true).Where(c => c.Owner != null).Distinct().ToList();
+            return Json(new { results = owners }, JsonRequestBehavior.AllowGet);
         }
 	}
 }

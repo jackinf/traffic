@@ -42,13 +42,15 @@
                 </div>
                 <div class="col-md-3">
                     <label for="shipType">Ship Type:</label>
-                    <input type="text" name="shipType" ng-model="search.ShipType" class="form-control">
+                    @*<input type="text" name="shipType" ng-model="search.ShipType" class="form-control">*@
+                    <input type="text" name="shipType" ng-model="search.ShipType" placeholder="ship type" typeahead="tatype for tatype in ta_ship_types | filter:$viewValue | limitTo:8" class="form-control">
                 </div>
             </div>
             <div class="panel-body" ng-show="showSearchMenu">
                 <div class="col-md-3">
                     <label for="name">Ship Name:</label>
                     <input type="text" name="name" ng-model="search.Name" class="form-control">
+                    @*<input type="text" name="name" ng-model="search.Name" placeholder="ship name" typeahead="taname for taname in ta_names | filter:$viewValue | limitTo:8" class="form-control">*@
                 </div>
                 <div class="col-md-3">
                     <label for="updateDate">MMSI:</label>
@@ -56,11 +58,13 @@
                 </div>
                 <div class="col-md-3">
                     <label for="flag">Flag:</label>
-                    <input type="text" name="flag" ng-model="search.Flag" class="form-control">
+                    @*<input type="text" name="flag" ng-model="search.Flag" class="form-control">*@
+                    <input type="text" name="flag" ng-model="search.Flag" placeholder="flag" typeahead="taflag for taflag in ta_flags | filter:$viewValue | limitTo:8" class="form-control">
                 </div>
                 <div class="col-md-3">
                     <label for="owner">Owner:</label>
-                    <input type="text" name="owner" ng-model="search.Owner" class="form-control">
+                    @*<input type="text" name="owner" ng-model="search.Owner" class="form-control">*@
+                    <input type="text" name="owner" ng-model="search.Owner" placeholder="owners" typeahead="taowner for taowner in ta_owners | filter:$viewValue | limitTo:8" class="form-control">
                 </div>
             </div>
             <div class="panel-body" ng-show="showColumnMenu">
@@ -82,6 +86,9 @@
         <p id="img_loading" style="display: none">
             Loading data...
             <img src="~/Images/loading.gif" />
+        </p>
+        <p>
+            @*<pager total-items="totalItems" page="currentPage"></pager>*@
         </p>
         <table class="table table-striped">
             <tr>
@@ -117,18 +124,18 @@
                 <td ng-show="showColumnFlag">{{ship.Flag}}</td>
                 <td ng-show="showColumnOwner">{{ship.Owner}}</td>
                 @*<td>{{ship.Builder}}</td>
-                    <td>{{ship.DeathWeightTonnage}}</td>
-                    <td>{{ship.FormerNames}}</td>
-                    <td>{{ship.GrossTonnage}}</td>
-                    <td>{{ship.HomePort}}</td>
-                    <td>{{ship.Manager}}</td>
-                    <td>{{ship.Owner}}</td>
-                    <td>{{ship.YearOfBuild}}</td>*@
+            <td>{{ship.DeathWeightTonnage}}</td>
+            <td>{{ship.FormerNames}}</td>
+            <td>{{ship.GrossTonnage}}</td>
+            <td>{{ship.HomePort}}</td>
+            <td>{{ship.Manager}}</td>
+            <td>{{ship.Owner}}</td>
+            <td>{{ship.YearOfBuild}}</td>*@
                 @*<td><a href="/Traffic/Edit/{{ship.ID}}">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>*@
                 @*<td><a ng-click="openEditMenu(ship)">Edit</a> | <a href="/Traffic/Delete/{{ship.ID}}">Delete</a></td>*@
                 <td>
                     <a ng-click="openEditMenu(ship)" style="cursor: pointer">Edit</a> | <a ng-click="openDeleteMenu(ship)" style="cursor: pointer">Delete</a>
-                    <input type="checkbox" ng-model="ship.selected"/>
+                    <input type="checkbox" ng-model="ship.selected" />
                 </td>
             </tr>
         </table>

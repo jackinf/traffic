@@ -9,7 +9,13 @@ function TrafficCtrl($scope, $http) {
 
     $scope.showSearchMenu = true;
     $scope.showColumnMenu = false;
-    
+
+    $scope.ta_owners = [];
+    $scope.ta_flags = [];
+    //$scope.ta_ship_names = [];
+    $scope.ta_ship_types = [];
+    //$scope.ta_cs = [];
+
     $scope.search = {
         $: undefined,
         ID: undefined,
@@ -32,21 +38,23 @@ function TrafficCtrl($scope, $http) {
         $scope.traffic = data;
         $("#img_loading").hide();
 
-        //var owners = [];
-        //data.each(function (element) {
-        //    var owner = element["Owner"];
-        //    if (owner != undefined && owner != '')
-        //        owners.push(owner);
-        //});
-
-        // enable autocomplete
-        //$("input[name='owner']").autocomplete({
-        //    source: owners,
-        //    select: function() {
-        //        console.log($scope.search.Owner);
-        //        $scope.search.Owner = "abis";
-        //    }
-        //});
+        data.each(function (element) {
+            var owner = element["Owner"];
+            var flag = element["Flag"];
+            //var shipname = element["Name"];
+            var type = element["ShipType"];
+            //var sc = element["Class Society"];
+            if (owner != undefined && owner != '')
+                $scope.ta_owners.push(owner);
+            if (flag != undefined && flag != '')
+                $scope.ta_flags.push(flag);
+            //if (shipname != undefined && shipname != '')
+            //    $scope.ta_names.push(shipname);
+            if (type != undefined && type != '')
+                $scope.ta_ship_types.push(type);
+        });
+        //$scope.totalItems = data.length;
+        //$scope.currentPage = 1;
     });
 
     $scope.toggleSearchMenuVisibility = function() {
