@@ -1,4 +1,4 @@
-﻿var myApp = angular.module('myApp', ['ngResource']);
+﻿var myApp = angular.module('myApp', ['ngResource', 'ui.bootstrap']);
 
 function TrafficCtrl($scope, $http) {
     var backupItem = {

@@ -26,9 +26,11 @@ namespace TrafficMVC
 
             bundles.Add(new ScriptBundle("~/bundles/Scripts/angular").Include(
                 "~/Scripts/angular.js",
+                "~/Scripts/angularui/ui-bootstrap-tpls-0.10.0.js",
                 "~/Scripts/angular-route.js",
                 "~/Scripts/angular-resource.js",
-                "~/Scripts/app.js"));
+                "~/Scripts/app.js"
+                ));
 
             // Not used
             bundles.Add(new StyleBundle("~/bundles/Content/helpers").Include(

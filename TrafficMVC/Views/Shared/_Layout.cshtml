@@ -8,7 +8,6 @@
     @Scripts.Render("~/bundles/modernizr")
     
     @Scripts.Render("~/bundles/jquery")
-    @*@Styles.Render("~/bundles/Content/helpers")*@
     @Scripts.Render("~/bundles/Scripts/helpers")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -20,10 +19,6 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
                 @Html.ActionLink("Application name", "Index", "Traffic", null, new { @class = "navbar-brand" })
             </div>
-            
-            @*<ul class="nav navbar-nav navbar-right">
-                <li><a href="/Home/Disconnect">Disconnect</a></li>
-            </ul>*@
         </div>
         
     </div>
