@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     
     @Scripts.Render("~/bundles/jquery")
-    @Styles.Render("~/bundles/Content/helpers")
+    @*@Styles.Render("~/bundles/Content/helpers")*@
     @Scripts.Render("~/bundles/Scripts/helpers")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -32,47 +32,8 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Marine Traffic Database Application</p>
-            
-            @* TODO: delete *@
-            <div class="ui-widget">
-                <label for="tags">Tags: </label>
-                <input id="tags">
-            </div>
         </footer>
     </div>
-    
-    @* TODO: delete *@
-    <script>
-        $(function () {
-            var availableTags = [
-              "ActionScript",
-              "AppleScript",
-              "Asp",
-              "BASIC",
-              "C",
-              "C++",
-              "Clojure",
-              "COBOL",
-              "ColdFusion",
-              "Erlang",
-              "Fortran",
-              "Groovy",
-              "Haskell",
-              "Java",
-              "JavaScript",
-              "Lisp",
-              "Perl",
-              "PHP",
-              "Python",
-              "Ruby",
-              "Scala",
-              "Scheme"
-            ];
-            $("#tags").autocomplete({
-                source: availableTags
-            });
-        });
-    </script>
 
 </body>
 </html>

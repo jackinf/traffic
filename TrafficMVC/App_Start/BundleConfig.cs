@@ -30,12 +30,16 @@ namespace TrafficMVC
                 "~/Scripts/angular-resource.js",
                 "~/Scripts/app.js"));
 
+            // Not used
             bundles.Add(new StyleBundle("~/bundles/Content/helpers").Include(
-                "~/Content/flick/jquery-ui-1.10.4.custom.min.css"));
+                "~/Content/flick/jquery-ui-1.10.4.custom.min.css"
+                ));
 
+            // Jquery-UI not used
             bundles.Add(new ScriptBundle("~/bundles/Scripts/helpers").Include(
-                "~/Scripts/helpers/sugar.js",
-                "~/Scripts/helpers/jquery-ui-1.10.4.autocomplete.min.js"));
+                "~/Scripts/helpers/sugar.js"
+                //,"~/Scripts/helpers/jquery-ui-1.10.4.autocomplete.min.js"
+                ));
         }
     }
 }

@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Commands\SearchMarineTraffic.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TrafficController.cs" />
     <Compile Include="Global.asax.cs">
@@ -176,6 +177,7 @@
     <None Include="Properties\PublishProfiles\marinetraffic - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\marinetraffic.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\demo\example1.js" />
     <Content Include="Scripts\dynamicList\main.js" />
     <Content Include="Scripts\helpers\jquery-ui-1.10.4.autocomplete.min.js" />
     <Content Include="Scripts\helpers\sugar.js" />
@@ -207,6 +209,7 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_Layout.cshtml" />
     <Content Include="Views\Traffic\DynamicList.cshtml" />
+    <Content Include="Views\Demo\Autocomplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
