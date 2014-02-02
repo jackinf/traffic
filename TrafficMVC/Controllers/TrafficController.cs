@@ -56,6 +56,21 @@ namespace TrafficMVC.Controllers
                 var now = DateTime.Now;
                 traffic.UpdateDate = string.Format("{0}/{1}/{2} {3}:{4}:{5}", now.Year, now.Month, now.Day, now.Hour,
                     now.Minute, now.Second);
+
+                // temporal fix for dissapearance of records with null value
+                traffic.HomePort = traffic.HomePort ?? string.Empty;
+                traffic.Builder = traffic.Builder ?? string.Empty;
+                traffic.ClassSociety = traffic.ClassSociety ?? string.Empty;
+                traffic.Flag = traffic.Flag ?? string.Empty;
+                traffic.FormerNames = traffic.FormerNames ?? string.Empty;
+                traffic.IMO = traffic.IMO ?? string.Empty;
+                traffic.Link = traffic.Link ?? string.Empty;
+                traffic.MMSI = traffic.MMSI ?? string.Empty;
+                traffic.Manager = traffic.Manager ?? string.Empty;
+                traffic.Name = traffic.Name ?? string.Empty;
+                traffic.Owner = traffic.Owner ?? string.Empty;
+                traffic.ShipType = traffic.ShipType ?? string.Empty;
+
                 OpenErpConnection.GetConnection().AddEntity(traffic);
                 return RedirectToAction("Index");
             }
