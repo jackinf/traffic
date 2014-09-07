@@ -134,6 +134,7 @@
     <Compile Include="Commands\SearchMarineTraffic.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
+    <Compile Include="Controllers\ExtraController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TrafficController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +190,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Images\thinker.jpg" />
+    <Content Include="Views\Extra\Roll-a-Ball04_Data.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -211,6 +213,8 @@
     <Content Include="Views\Shared\EditorTemplates\_Layout.cshtml" />
     <Content Include="Views\Traffic\DynamicList.cshtml" />
     <Content Include="Views\Demo\Autocomplete.cshtml" />
+    <Content Include="Views\Extra\Index.cshtml" />
+    <Content Include="Views\Extra\Roll-a-Ball04_Data.unity3d" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
@@ -243,7 +247,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>38242</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

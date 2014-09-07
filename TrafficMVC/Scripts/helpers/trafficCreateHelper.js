@@ -16,6 +16,11 @@
     var input_former_names = $("input[name='FormerNames']");
 
     var img_loading = $("#img_loading");
+    
+    document.getElementById("imo_search").addEventListener("keydown", function (e) {
+        // Enter is pressed
+        if (e.keyCode == 13) { $("#searchBtn").trigger("click"); }
+    }, false);
 
     $("#searchBtn").click(function () {
         
